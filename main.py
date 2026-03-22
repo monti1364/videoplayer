@@ -22,6 +22,6 @@ if __name__ == "__main__":
         VideoApp().run()
     except Exception as e:
         error=traceback.format_exc()
-        Clipboard(str(error))                
+        Clipboard.copy(str(error))                
 
-
+        
