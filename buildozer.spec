@@ -1,33 +1,34 @@
 [app]
-title = VideoPlayerApp
-package.name = videoplayerapp
-package.domain = org.test
+title = MyVideoApp
+package.name = myvideoapp
+package.domain = org.example
 
 source.dir = .
-source.include_exts = py,png,jpg,kv,atlas,mp4
+# ✅ Assets folder ko include karna zaroori hai
+source.include_exts = py,png,jpg,kv,mp4
+source.include_patterns = assets/*
 
-# ✅ REQUIRED FIX
-version = 1.0
+version = 0.1
 
-# ✅ Video player + kivy + kivymd stable combo
-requirements = python3,kivy==2.3.0,kivymd==1.1.1,ffpyplayer,pillow
+# ✅ IMPORTANT: Video ke liye ye requirements honi chahiye
+requirements = python3,kivy==2.3.0,kivymd==1.1.1,pillow,ffpyplayer,ffmpeg,hostpython3
 
 orientation = portrait
 fullscreen = 1
 
-# ✅ Permissions (modern android safe)
-android.permissions = INTERNET,READ_MEDIA_VIDEO,READ_EXTERNAL_STORAGE
+# ✅ Permissions for Storage & Video
+android.permissions = INTERNET,READ_EXTERNAL_STORAGE,WRITE_EXTERNAL_STORAGE,READ_MEDIA_VIDEO
 
-android.api = 33
+# ✅ Stability ke liye API 31-33 best hai
+android.api = 31
 android.minapi = 21
 android.ndk = 25b
-
 android.accept_sdk_license = True
 
-# ✅ ONLY ONE ARCH (stable)
+# ✅ Architecture (Sirf 64-bit rakhein fast build ke liye)
 android.archs = arm64-v8a
 
-# Optional but recommended
+# ✅ Debugging enabled
 android.logcat_filters = *:S python:D
 
 [buildozer]
